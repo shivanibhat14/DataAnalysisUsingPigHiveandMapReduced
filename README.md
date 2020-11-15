@@ -34,7 +34,8 @@ After the data is loaded to HDFS, queries provided are run to retrieve the posts
 The tasks mentioned above were run on GCP console by creating a daatproc or cluster with a master node and reducer nodes. asia-east region was used to create the cluster as it was closer to India
 
 Reference: 
+
 Stackoverflow: https://stackoverflow.com/
 
 
-GitHub for data retrival: https://github.com/harshalchaudhari35/StackExchange_DataProcessing
+GitHub for data cleaning: https://github.com/arunabellgutteramesh/PigHiveOnStackExchangeData/blob/master/code/ETL/fetchValidRecords.pig
