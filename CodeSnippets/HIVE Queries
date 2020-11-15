@@ -1,0 +1,20 @@
+Q1: The top 10 posts by score
+
+hive> 
+    > SELECT id, title, score 
+    > FROM DataFromStack
+    > ORDER BY score DESC LIMIT 10;
+    
+Q2: The top 10 users by post score   
+
+hive> SELECT OwnerUserId, SUM(Score) AS TotalScore
+    > FROM DataFromStack
+    > GROUP BY OwnerUserId
+    > ORDER BY TotalScore DESC LIMIT 10;
+
+Q3: The number of distinct users, who used the word “Hadoop” in one of their
+  posts
+
+hive> SELECT COUNT(DISTINCT OwnerUserId)
+    > FROM DataFromStack
+    > WHERE (body LIKE '%hadoop%' OR title LIKE '%hadoop%' OR tags LIKE '%hadoop%');
