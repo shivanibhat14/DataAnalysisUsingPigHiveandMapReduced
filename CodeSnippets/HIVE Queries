@@ -1,3 +1,10 @@
+#Create table 
+
+create table DataFromStack(Id int, Score int, Body String, OwnerUserId Int, Title String, Tags String) 
+    > row format delimited 
+    > FIELDS TERMINATED BY ','
+    > location '/Data/FinalDataNew';
+
 Q1: The top 10 posts by score
 
 hive> 
