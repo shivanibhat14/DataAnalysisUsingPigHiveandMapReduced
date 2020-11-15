@@ -30,7 +30,7 @@ Querying with HIVE:
 After the data is loaded to HDFS, a table is first created with CREATE command after which queries provided are run to retrieve the posts and users. SELECT hive queries are used here. 
 
 
-The tasks mentioned above were run on GCP console by creating a daatproc or cluster with a master node and reducer nodes. asia-east region was used to create the cluster as it was closer to India
+The tasks mentioned above were run on GCP console by creating a dataproc or cluster with a master node and reducer nodes. asia-east region was used to create the cluster as it was closer to India
 
 Reference: 
 
