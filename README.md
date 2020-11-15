@@ -21,14 +21,13 @@ Step 2:
 Load data using PIG:
 
 
-Data downloaded contains multiple collumns with somme messy data which requires cleaning before uploading it to HDFS to run queries.
-CleanData.py file is run to clean the body of the file containing delimiters which otheriwse throws errors while loading the file to PIG. The regular expressions should be removed. After cleaning, The four csv files are loaded using PIG and concatinated using UNION function. For further handling, the dataset is restricted to only few required  columns and the columns which do not contain NULL values. The data is now loaded to HDFS for precessing with HIVE
+Data downloaded contains multiple columns with some messy data which requires cleaning before uploading it to HDFS to run queries. CleanData.py file is run to clean the body of the file containing delimiters which otherwise throws errors while loading the file to PIG. The regular expressions should be removed. After cleaning, the four csv files are loaded using PIG and concatenated using UNION function. For further handling, the dataset is restricted to only few required columns and the columns which do not contain NULL values. The data is now loaded to HDFS for processing with HIVE 
 
 Step 3:
 Querying with HIVE:
 
 
-After the data is loaded to HDFS, queries provided are run to retrieve the posts and users. CREATE hive queries are used here. 
+After the data is loaded to HDFS, a table is first created with CREATE command after which queries provided are run to retrieve the posts and users. SELECT hive queries are used here. 
 
 
 The tasks mentioned above were run on GCP console by creating a daatproc or cluster with a master node and reducer nodes. asia-east region was used to create the cluster as it was closer to India
