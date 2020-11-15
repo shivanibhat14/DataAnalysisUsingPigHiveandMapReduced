@@ -1,7 +1,7 @@
 # DataAnalysisUsingPig,HiveandMapReduced
 Stack exchange comprises of Q&A posted by communities majorly stack overflow. Data from stack exchange manifests questions posted from diverse fields. Others read, comment and score the questions posted. 
 Link to stack exchange data: 
-Queries are run at the link provided to retrieve files (.csv) . We can only fetch 500000 rows at a time. The assignment required me to retrive around 2 lakh rows, for which I ran 4 queries with respect to VIEWCOUNT.
+Queries are run at the link provided to retrieve files (.csv) . We can only fetch 50K rows at a time. The assignment required me to retrive around 2 lakh rows, for which I ran 4 queries with respect to VIEWCOUNT.
  
 Step 1:
 Data Retrival:
