@@ -28,7 +28,7 @@ munityOwnedDate:chararray);
 
 finalCSV= UNION csv,csv1,csv2,csv3;
 
-formattedcsv = FOREACH csv GENERATE  Id AS Id, Score AS Score, REPLACE(Body,',*','') AS Body, OwnerUserId AS OwnerUserId, REPLACE(Title,',*','') AS Title, REPLACE(Tags,',*','') AS Tags;
+formattedcsv = FOREACH finalCSV GENERATE  Id AS Id, Score AS Score, REPLACE(Body,',*','') AS Body, OwnerUserId AS OwnerUserId, REPLACE(Title,',*','') AS Title, REPLACE(Tags,',*','') AS Tags;
 
 validcsv = FILTER formattedcsv BY (OwnerUserId IS NOT NULL) AND (Score IS NOT NULL);
 
