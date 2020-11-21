@@ -1,0 +1,76 @@
+step 1: 
+
+create temporary macro max2(x INT, y INT)
+if(x>y,x,y);
+
+step 2:
+
+create temporary macro tfidf(tf FLOAT, df_t INT, n_docs INT)
+tf * (log(10, CAST(n_docs as FLOAT)/max2(1,df_t)) + 1.0);
+
+step 3:
+
+create or replace view data_view
+as
+select
+  ownerUserId, 
+  word
+from
+  DataFromStack LATERAL VIEW explode(tokenize(Title,true)) t as word
+where
+  not is_stopword(word);
+  
+ step 4:
+ 
+ create or replace view term_frequency 
+as
+select
+  ownerUserId, 
+  word,
+  freq
+from (
+select
+  ownerUserId,
+  tf(word) as word2freq
+from
+  data_view
+group by
+  ownerUserId
+) t 
+LATERAL VIEW explode(word2freq) t2 as word, freq;
+
+step 5:
+
+create or replace view document_frequency
+as
+select
+  word, 
+  count(distinct ownerUserId) docs
+from
+  data_view
+group by
+  word;
+  
+step 6:
+
+select count(distinct ownerUserId) from DataFromStack;
+set hivevar:n_docs=10;
+  
+  step 7:
+  
+ create or replace view tfidf
+as
+select
+  tf.ownerUserId,
+  tf.word,
+  rank(),
+  -- tf.freq * (log(10, CAST(${n_docs} as FLOAT)/max2(1,df.docs)) + 1.0) as tfidf
+  tfidf(tf.freq, df.docs, ${n_docs}) as tfidf
+from
+  term_frequency tf 
+  JOIN document_frequency df ON (tf.word = df.word)
+order by 
+  tfidf desc LIMIT 10;
+  
+  
+  select * from tfidf;
